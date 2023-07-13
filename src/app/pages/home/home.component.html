@@ -1,0 +1,52 @@
+<h1>Welcome</h1>
+
+<form id="form-container" [formGroup]="signUpForm">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" formControlName="email" />
+    <mat-error *ngIf="signUpForm.controls['email'].errors?.['required']">
+        Email is required.
+    </mat-error>
+    <mat-error *ngIf="signUpForm.controls['email'].errors?.['email']">
+        Given value is not an email.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="signUpForm.controls['password'].errors?.['required']">
+        Password is required.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Confirm Password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Confirm Password"
+      formControlName="confirmPassword"
+    />
+    <mat-error *ngIf="signUpForm.controls['confirmPassword'].errors?.['required']">
+        Confirm Password is required.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Company</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Company"
+      formControlName="company"
+    />
+    <mat-error *ngIf="signUpForm.controls['company'].errors?.['required']">
+        Company is required.
+    </mat-error>
+  </mat-form-field>
+  <button [disabled]="signUpForm.invalid" (click)="submitForm()" mat-raised-button color="primary">Click here</button>
+</form>
